@@ -9,9 +9,9 @@ jobs:
       - run:
           name: check git version
           command: |
-            git version
             apt update && apt install -y shellcheck pre-commit git
             pre-commit run --all-files
+      - checkout
 workflows:
   version: 2
   build-and-deploy:
