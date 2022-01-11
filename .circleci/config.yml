@@ -1,0 +1,14 @@
+version: 2.1
+
+jobs:
+  validate-changes:
+    docker:
+      # pre-commit package is included since 20.10
+      - image: ubuntu:20.10
+    steps:
+      - run:
+          name: check git version
+          command: |
+            git version
+            apt update && apt install -y shellcheck pre-commit git
+            pre-commit run --all-files
